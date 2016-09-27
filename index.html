@@ -2189,4 +2189,40 @@ Keep track of your favorite tv series and shows. New sesonss of Game of Thrones,
       }
 
       function setColumns() {
-        var winWidth = $(window).width(),
+          var winWidth = $(window).width(),
+          columnNumber = getColumnNumber(),
+          itemWidth = Math.floor(winWidth / columnNumber);
+
+          $container.find('.market-item').each(function() {
+            $(this).css( {
+            width : itemWidth + 'px'
+          });
+        });
+      }
+
+      function setPortfolio() {
+        setColumns();
+        $container.isotope('reLayout');
+      }
+
+      $container.imagesLoaded(function () {
+        setPortfolio();
+      });
+
+      $(window).on('resize', function () {
+      setPortfolio();
+    });
+  })(jQuery);
+</script>
+
+  <script src="js/jquery.mb.YTPlayer.js"></script>
+    <script type="text/javascript">
+    $(function(){
+      $(".player").mb_YTPlayer();
+    });
+  </script>
+
+
+
+  </body>
+</html>
